@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using NoVacancy.API.App_Start;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace NoVacancy.API
             HttpConfiguration config = new HttpConfiguration();
             WebApiConfig.Register(config);
             app.UseWebApi(config);
+            NinjectWebCommon.Start();
         }
     }
 }

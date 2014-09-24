@@ -115,6 +115,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\EstablishmentController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -130,6 +131,20 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoVacancy.BL\NoVacancy.BL.csproj">
+      <Project>{06a26123-5ae5-4b38-83d1-c8e32f3feed9}</Project>
+      <Name>NoVacancy.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoVacancy.DAL\NoVacancy.DAL.csproj">
+      <Project>{9926cc8f-eee5-4c4b-ac09-d431005cecbe}</Project>
+      <Name>NoVacancy.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoVacancy.DTO\NoVacancy.DTO.csproj">
+      <Project>{f042cdcf-1acd-4afe-a9a0-82d8f2e448d3}</Project>
+      <Name>NoVacancy.DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

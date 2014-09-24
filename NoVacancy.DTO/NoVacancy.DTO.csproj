@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTransferObjects\DTOEstablishment.cs" />
     <Compile Include="DataTransferObjects\DTOSearch.cs" />
     <Compile Include="DataTransferObjects\DTOStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -10,6 +10,11 @@ namespace NoVacancy.API.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using System.Web.Http;
+    using NoVacancy.DAL.Interface;
+    using NoVacancy.DAL.Repository;
+    using NoVacancy.BL.IRepository;
+    using NoVacancy.BL.IRepositoryServiceImpl;
 
     public static class NinjectWebCommon 
     {
@@ -42,7 +47,10 @@ namespace NoVacancy.API.App_Start
             var kernel = new StandardKernel();
             kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
-            
+
+            //Suport WebAPI Injection
+            GlobalConfiguration.Configuration.DependencyResolver = new WebApiContrib.IoC.Ninject.NinjectResolver(kernel);
+ 
             RegisterServices(kernel);
             return kernel;
         }
@@ -53,6 +61,9 @@ namespace NoVacancy.API.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IRepositoryEstablishment>().To<RepositoryEstablishment>();
+            kernel.Bind<IEstablishment>().To<Establishment>();
+            
         }        
     }
 }
