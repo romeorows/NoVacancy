@@ -1,0 +1,328 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NoVacancyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="mdCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="ISO2" Type="char" MaxLength="2" />
+          <Property Name="CountryName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="LongCountryName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="ISO3" Type="char" MaxLength="3" />
+          <Property Name="NumCode" Type="varchar" MaxLength="6" />
+          <Property Name="UNMemberState" Type="varchar" MaxLength="12" />
+          <Property Name="CallingCode" Type="varchar" MaxLength="8" />
+          <Property Name="CCTLD" Type="varchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="mdEstablishmentType">
+          <Key>
+            <PropertyRef Name="EstablishmentTypeID" />
+          </Key>
+          <Property Name="EstablishmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EstablishmentType" Type="nvarchar" MaxLength="100" />
+          <Property Name="EstablishmentTypeDesc" Type="nvarchar" MaxLength="255" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="DateDeactivated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="DateDeleted" Type="datetime" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="trEstablishment">
+          <Key>
+            <PropertyRef Name="EstablishmentID" />
+          </Key>
+          <Property Name="EstablishmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="EstablishmentTypeID" Type="int" />
+          <Property Name="ContactPerson" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Lng" Type="float" />
+          <Property Name="Active" Type="int" Nullable="false" />
+          <Property Name="DateDeactivated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" Nullable="false" />
+          <Property Name="DateDeleted" Type="datetime" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityType Name="trOffer">
+          <Key>
+            <PropertyRef Name="OfferID" />
+          </Key>
+          <Property Name="OfferID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" />
+          <Property Name="EstablishmentID" Type="int" />
+          <Property Name="EstablishmentTypeID" Type="int" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Currency" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Active" Type="int" />
+          <Property Name="DateDeactivated" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="DateCreated" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="DateUpdated" Type="datetime" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
+          <Property Name="DateDeleted" Type="datetime" />
+          <Property Name="DeletedBy" Type="int" />
+          <Property Name="Year" Type="int" />
+        </EntityType>
+        <EntityContainer Name="NoVacancyModelStoreContainer">
+          <EntitySet Name="mdCountry" EntityType="Self.mdCountry" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mdEstablishmentType" EntityType="Self.mdEstablishmentType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trEstablishment" EntityType="Self.trEstablishment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="trOffer" EntityType="Self.trOffer" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NoVacancyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="mdCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="ISO2" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CountryName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LongCountryName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ISO3" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="NumCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="UNMemberState" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="CallingCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="CCTLD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="mdEstablishmentType">
+          <Key>
+            <PropertyRef Name="EstablishmentTypeID" />
+          </Key>
+          <Property Name="EstablishmentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="EstablishmentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EstablishmentTypeDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <Property Name="Year" Type="Int32" />
+        </EntityType>
+        <EntityType Name="trEstablishment">
+          <Key>
+            <PropertyRef Name="EstablishmentID" />
+          </Key>
+          <Property Name="EstablishmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EstablishmentTypeID" Type="Int32" />
+          <Property Name="ContactPerson" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Lng" Type="Double" />
+          <Property Name="Active" Type="Int32" Nullable="false" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" Nullable="false" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="Year" Type="Int32" />
+        </EntityType>
+        <EntityType Name="trOffer">
+          <Key>
+            <PropertyRef Name="OfferID" />
+          </Key>
+          <Property Name="OfferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" />
+          <Property Name="EstablishmentID" Type="Int32" />
+          <Property Name="EstablishmentTypeID" Type="Int32" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Currency" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Active" Type="Int32" />
+          <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="DateUpdated" Type="DateTime" Precision="3" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
+          <Property Name="DateDeleted" Type="DateTime" Precision="3" />
+          <Property Name="DeletedBy" Type="Int32" />
+          <Property Name="Year" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="NoVacancyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mdCountries" EntityType="Self.mdCountry" />
+          <EntitySet Name="mdEstablishmentTypes" EntityType="Self.mdEstablishmentType" />
+          <EntitySet Name="trEstablishments" EntityType="Self.trEstablishment" />
+          <EntitySet Name="trOffers" EntityType="Self.trOffer" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NoVacancyModelStoreContainer" CdmEntityContainer="NoVacancyEntities">
+          <EntitySetMapping Name="mdCountries">
+            <EntityTypeMapping TypeName="NoVacancyModel.mdCountry">
+              <MappingFragment StoreEntitySet="mdCountry">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="ISO2" ColumnName="ISO2" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="LongCountryName" ColumnName="LongCountryName" />
+                <ScalarProperty Name="ISO3" ColumnName="ISO3" />
+                <ScalarProperty Name="NumCode" ColumnName="NumCode" />
+                <ScalarProperty Name="UNMemberState" ColumnName="UNMemberState" />
+                <ScalarProperty Name="CallingCode" ColumnName="CallingCode" />
+                <ScalarProperty Name="CCTLD" ColumnName="CCTLD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mdEstablishmentTypes">
+            <EntityTypeMapping TypeName="NoVacancyModel.mdEstablishmentType">
+              <MappingFragment StoreEntitySet="mdEstablishmentType">
+                <ScalarProperty Name="EstablishmentTypeID" ColumnName="EstablishmentTypeID" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="EstablishmentType" ColumnName="EstablishmentType" />
+                <ScalarProperty Name="EstablishmentTypeDesc" ColumnName="EstablishmentTypeDesc" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trEstablishments">
+            <EntityTypeMapping TypeName="NoVacancyModel.trEstablishment">
+              <MappingFragment StoreEntitySet="trEstablishment">
+                <ScalarProperty Name="EstablishmentID" ColumnName="EstablishmentID" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EstablishmentTypeID" ColumnName="EstablishmentTypeID" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="trOffers">
+            <EntityTypeMapping TypeName="NoVacancyModel.trOffer">
+              <MappingFragment StoreEntitySet="trOffer">
+                <ScalarProperty Name="OfferID" ColumnName="OfferID" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="EstablishmentID" ColumnName="EstablishmentID" />
+                <ScalarProperty Name="EstablishmentTypeID" ColumnName="EstablishmentTypeID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DateDeactivated" ColumnName="DateDeactivated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="DateUpdated" ColumnName="DateUpdated" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DateDeleted" ColumnName="DateDeleted" />
+                <ScalarProperty Name="DeletedBy" ColumnName="DeletedBy" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

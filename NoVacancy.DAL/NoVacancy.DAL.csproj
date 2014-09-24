@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9926CC8F-EEE5-4C4B-AC09-D431005CECBE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NoVacancy.DAL</RootNamespace>
+    <AssemblyName>NoVacancy.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataMapping\MappingConfiguration.cs" />
+    <Compile Include="Entities\mdCountry.cs">
+      <DependentUpon>NoVacancy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\mdEstablishmentType.cs">
+      <DependentUpon>NoVacancy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NoVacancy.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoVacancy.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NoVacancy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoVacancy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NoVacancy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NoVacancy.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\trEstablishment.cs">
+      <DependentUpon>NoVacancy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\trOffer.cs">
+      <DependentUpon>NoVacancy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Interface\IRepository.cs" />
+    <Compile Include="Interface\IRepositoryEstablishment.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\GenericRepository.cs" />
+    <Compile Include="Repository\RepositoryEstablishment.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NoVacancy.Common\NoVacancy.Common.csproj">
+      <Project>{4b5f0fff-286f-4ad7-bf1a-77b5c715b4c9}</Project>
+      <Name>NoVacancy.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NoVacancy.DTO\NoVacancy.DTO.csproj">
+      <Project>{f042cdcf-1acd-4afe-a9a0-82d8f2e448d3}</Project>
+      <Name>NoVacancy.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Entities\NoVacancy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NoVacancy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\NoVacancy.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NoVacancy.edmx</DependentUpon>
+      <LastGenOutput>NoVacancy.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\NoVacancy.edmx.diagram">
+      <DependentUpon>NoVacancy.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\NoVacancy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NoVacancy.edmx</DependentUpon>
+      <LastGenOutput>NoVacancy.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
