@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoVacancy.Common", "NoVacan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoVacancy.Test", "NoVacancy.Test\NoVacancy.Test.csproj", "{D1851651-F0E0-44C9-8736-3FB56744F626}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoVacancy.API", "NoVacancy.API\NoVacancy.API.csproj", "{7FEC86E1-0701-48DF-B45F-46E1EEA34C69}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoVacancy.Web", "NoVacancy.Web\NoVacancy.Web.csproj", "{DDFDB1E8-66F5-4C2C-88C9-2D9B7DC45380}"
 EndProject
 Global
@@ -41,10 +39,6 @@ Global
 		{D1851651-F0E0-44C9-8736-3FB56744F626}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D1851651-F0E0-44C9-8736-3FB56744F626}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D1851651-F0E0-44C9-8736-3FB56744F626}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FEC86E1-0701-48DF-B45F-46E1EEA34C69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FEC86E1-0701-48DF-B45F-46E1EEA34C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FEC86E1-0701-48DF-B45F-46E1EEA34C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FEC86E1-0701-48DF-B45F-46E1EEA34C69}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DDFDB1E8-66F5-4C2C-88C9-2D9B7DC45380}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DDFDB1E8-66F5-4C2C-88C9-2D9B7DC45380}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDFDB1E8-66F5-4C2C-88C9-2D9B7DC45380}.Release|Any CPU.ActiveCfg = Release|Any CPU
