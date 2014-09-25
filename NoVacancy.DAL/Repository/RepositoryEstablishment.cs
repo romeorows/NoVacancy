@@ -1,4 +1,5 @@
-﻿using NoVacancy.DAL.Entities;
+﻿using DataMapping;
+using NoVacancy.DAL.Entities;
 using NoVacancy.DAL.Interface;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace NoVacancy.DAL.Repository
         public RepositoryEstablishment()
             :base (new NoVacancyEntities())
         {
-
+            MappingConfiguration.CreateEstablishment();
         }
     }
 }
