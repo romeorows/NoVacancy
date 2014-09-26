@@ -4,15 +4,21 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NoVacancyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="NoVacancyModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="NoVacancyModelStoreContainer">
+          <EntitySet Name="mdCountry" EntityType="NoVacancyModel.Store.mdCountry" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="mdEstablishmentType" EntityType="NoVacancyModel.Store.mdEstablishmentType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="trEstablishment" EntityType="NoVacancyModel.Store.trEstablishment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="trOffer" EntityType="NoVacancyModel.Store.trOffer" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
         <EntityType Name="mdCountry">
           <Key>
             <PropertyRef Name="CountryID" />
           </Key>
           <Property Name="CountryID" Type="int" Nullable="false" />
           <Property Name="ISO2" Type="char" MaxLength="2" />
-          <Property Name="CountryName" Type="varchar" MaxLength="80" Nullable="false" />
-          <Property Name="LongCountryName" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="LongCountryName" Type="varchar" Nullable="false" MaxLength="80" />
           <Property Name="ISO3" Type="char" MaxLength="3" />
           <Property Name="NumCode" Type="varchar" MaxLength="6" />
           <Property Name="UNMemberState" Type="varchar" MaxLength="12" />
@@ -23,7 +29,7 @@
           <Key>
             <PropertyRef Name="EstablishmentTypeID" />
           </Key>
-          <Property Name="EstablishmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstablishmentTypeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentType" Type="nvarchar" MaxLength="100" />
           <Property Name="EstablishmentTypeDesc" Type="nvarchar" MaxLength="255" />
@@ -42,7 +48,7 @@
           <Key>
             <PropertyRef Name="EstablishmentID" />
           </Key>
-          <Property Name="EstablishmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EstablishmentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="EstablishmentTypeID" Type="int" />
@@ -73,7 +79,7 @@
           <Key>
             <PropertyRef Name="OfferID" />
           </Key>
-          <Property Name="OfferID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OfferID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="uniqueidentifier" StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentID" Type="int" />
           <Property Name="EstablishmentTypeID" Type="int" />
@@ -95,39 +101,39 @@
           <Property Name="DeletedBy" Type="int" />
           <Property Name="Year" Type="int" />
         </EntityType>
-        <EntityContainer Name="NoVacancyModelStoreContainer">
-          <EntitySet Name="mdCountry" EntityType="Self.mdCountry" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="mdEstablishmentType" EntityType="Self.mdEstablishmentType" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="trEstablishment" EntityType="Self.trEstablishment" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="trOffer" EntityType="Self.trOffer" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NoVacancyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="NoVacancyModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="NoVacancyEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="mdCountries" EntityType="NoVacancyModel.mdCountry" />
+          <EntitySet Name="mdEstablishmentTypes" EntityType="NoVacancyModel.mdEstablishmentType" />
+          <EntitySet Name="trEstablishments" EntityType="NoVacancyModel.trEstablishment" />
+          <EntitySet Name="trOffers" EntityType="NoVacancyModel.trOffer" />
+        </EntityContainer>
         <EntityType Name="mdCountry">
           <Key>
             <PropertyRef Name="CountryID" />
           </Key>
           <Property Name="CountryID" Type="Int32" Nullable="false" />
-          <Property Name="ISO2" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
-          <Property Name="CountryName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="LongCountryName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ISO3" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="NumCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
-          <Property Name="UNMemberState" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
-          <Property Name="CallingCode" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
-          <Property Name="CCTLD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="ISO2" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="LongCountryName" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="ISO3" Type="String" MaxLength="3" Unicode="false" FixedLength="true" />
+          <Property Name="NumCode" Type="String" MaxLength="6" Unicode="false" FixedLength="false" />
+          <Property Name="UNMemberState" Type="String" MaxLength="12" Unicode="false" FixedLength="false" />
+          <Property Name="CallingCode" Type="String" MaxLength="8" Unicode="false" FixedLength="false" />
+          <Property Name="CCTLD" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="mdEstablishmentType">
           <Key>
             <PropertyRef Name="EstablishmentTypeID" />
           </Key>
-          <Property Name="EstablishmentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstablishmentTypeID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="EstablishmentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="EstablishmentTypeDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="EstablishmentType" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="EstablishmentTypeDesc" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Active" Type="Int32" Nullable="false" />
           <Property Name="DateDeactivated" Type="DateTime" Precision="3" />
           <Property Name="CreatedBy" Type="Int32" />
@@ -143,20 +149,20 @@
           <Key>
             <PropertyRef Name="EstablishmentID" />
           </Key>
-          <Property Name="EstablishmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EstablishmentID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="EstablishmentTypeID" Type="Int32" />
-          <Property Name="ContactPerson" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WebSite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactPerson" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WebSite" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CountryID" Type="Int32" />
           <Property Name="CityID" Type="Int32" />
-          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Lat" Type="Double" />
           <Property Name="Lng" Type="Double" />
           <Property Name="Active" Type="Int32" Nullable="false" />
@@ -174,11 +180,11 @@
           <Key>
             <PropertyRef Name="OfferID" />
           </Key>
-          <Property Name="OfferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OfferID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="Guid" Type="Guid" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentID" Type="Int32" />
           <Property Name="EstablishmentTypeID" Type="Int32" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Quantity" Type="Int32" />
           <Property Name="Discount" Type="Double" />
           <Property Name="Price" Type="Double" />
@@ -196,12 +202,6 @@
           <Property Name="DeletedBy" Type="Int32" />
           <Property Name="Year" Type="Int32" />
         </EntityType>
-        <EntityContainer Name="NoVacancyEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="mdCountries" EntityType="Self.mdCountry" />
-          <EntitySet Name="mdEstablishmentTypes" EntityType="Self.mdEstablishmentType" />
-          <EntitySet Name="trEstablishments" EntityType="Self.trEstablishment" />
-          <EntitySet Name="trOffers" EntityType="Self.trOffer" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -316,9 +316,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
