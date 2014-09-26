@@ -80,8 +80,8 @@ namespace NoVacancy.DTO.DataTransferObjects
     [DataContract]
     public class DTOEstablishment : DTOStatus
     {
-        [DataMember]
-        public string Guid { get; set; }
+        //[DataMember]
+        //public string Guid { get; set; }
         [DataMember]
         public string Name { get; set; }
         [DataMember]

@@ -24,7 +24,7 @@
             <PropertyRef Name="EstablishmentTypeID" />
           </Key>
           <Property Name="EstablishmentTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentType" Type="nvarchar" MaxLength="100" />
           <Property Name="EstablishmentTypeDesc" Type="nvarchar" MaxLength="255" />
           <Property Name="Active" Type="int" Nullable="false" />
@@ -43,7 +43,7 @@
             <PropertyRef Name="EstablishmentID" />
           </Key>
           <Property Name="EstablishmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Guid" Type="uniqueidentifier" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" />
           <Property Name="EstablishmentTypeID" Type="int" />
           <Property Name="ContactPerson" Type="nvarchar" MaxLength="255" />
@@ -74,7 +74,7 @@
             <PropertyRef Name="OfferID" />
           </Key>
           <Property Name="OfferID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Guid" Type="uniqueidentifier" />
+          <Property Name="Guid" Type="uniqueidentifier" StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentID" Type="int" />
           <Property Name="EstablishmentTypeID" Type="int" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" />
@@ -125,7 +125,7 @@
             <PropertyRef Name="EstablishmentTypeID" />
           </Key>
           <Property Name="EstablishmentTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentType" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="EstablishmentTypeDesc" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Int32" Nullable="false" />
@@ -144,7 +144,7 @@
             <PropertyRef Name="EstablishmentID" />
           </Key>
           <Property Name="EstablishmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Guid" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EstablishmentTypeID" Type="Int32" />
           <Property Name="ContactPerson" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -175,7 +175,7 @@
             <PropertyRef Name="OfferID" />
           </Key>
           <Property Name="OfferID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Guid" Type="Guid" />
+          <Property Name="Guid" Type="Guid" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="EstablishmentID" Type="Int32" />
           <Property Name="EstablishmentTypeID" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
