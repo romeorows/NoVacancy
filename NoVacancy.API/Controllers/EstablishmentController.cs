@@ -18,12 +18,35 @@ namespace NoVacancy.API.Controllers
         {
             this._IRepository = _IRepository;
         }
+
+        /// <summary>
+        /// Create a new Establishment
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         [HttpPost]
-        public DTOEstablishment Create(DTOEstablishment data)
+        public HttpResponseMessage Create([FromBody] DTOEstablishment data)
         {
-            var result = new DTOEstablishment();
-            result = _IRepository.CreateEstablishment(data);
-            return result;
+            try
+            {
+                var result = new DTOEstablishment();
+
+                result = _IRepository.CreateEstablishment(data);
+
+                return Request.CreateResponse(HttpStatusCode.Created, data);
+
+            }
+            catch (Exception)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest,"Could not create establishment. Please report to issue.");
+            }
         }
+
+        public Object Get()
+        {
+            return new { Results = 1 };
+        }
+
+
     }
 }
