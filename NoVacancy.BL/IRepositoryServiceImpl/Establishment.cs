@@ -36,5 +36,31 @@ namespace NoVacancy.BL.IRepositoryServiceImpl
             }
             return result;
         }
+
+        /// <summary>
+        /// Get a single establishment
+        /// </summary>
+        /// <param name="id">string guid</param>
+        /// <returns></returns>
+        public DTOEstablishmentInfo GetEstablishment(string id)
+        {
+            
+            var result = new DTOEstablishmentInfo();
+
+            try
+            {
+
+                result = _IRepository.GetEstablishment(id);
+
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccessful = false;
+                result.ErrorMsg = "BLL Error - " + ex.Message;
+            }
+
+            return result;
+        }
+
     }
 }

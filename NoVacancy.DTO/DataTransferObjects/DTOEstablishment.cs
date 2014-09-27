@@ -42,11 +42,11 @@ namespace NoVacancy.DTO.DataTransferObjects
     public class DTOEstablishmentInfo :DTOStatus
     {
         [DataMember]
-        public string Guid { get; set; }
+        public Guid Guid { get; set; }
         [DataMember]
         public string Name { get; set; }
         [DataMember]
-        public int EstablishmentTypeID { get; set; }
+        public int? EstablishmentTypeID { get; set; }
         [DataMember]
         public string ContactPerson { get; set; }
         [DataMember]
@@ -62,15 +62,15 @@ namespace NoVacancy.DTO.DataTransferObjects
         [DataMember]
         public string Address { get; set; }
         [DataMember]
-        public int CountryID { get; set; }
+        public int? CountryID { get; set; }
         [DataMember]
-        public int CityID { get; set; }
+        public int? CityID { get; set; }
         [DataMember]
         public string Location { get; set; }
         [DataMember]
-        public float Lat { get; set; }
+        public double? Lat { get; set; }
         [DataMember]
-        public float Lng { get; set; }
+        public double? Lng { get; set; }
         [DataMember]
         public int Active { get; set; }
         [DataMember]
@@ -80,8 +80,7 @@ namespace NoVacancy.DTO.DataTransferObjects
     [DataContract]
     public class DTOEstablishment : DTOStatus
     {
-        //[DataMember]
-        //public string Guid { get; set; }
+        
         [DataMember]
         public string Name { get; set; }
         [DataMember]
@@ -106,5 +105,15 @@ namespace NoVacancy.DTO.DataTransferObjects
         public int CityID { get; set; }
         [DataMember]
         public string Location { get; set; }
+    }
+
+    [DataContract]
+    public class DTOEstablishmentInfoList : DTOStatus
+    {
+        [DataMember]
+        public List<DTOEstablishmentInfo> Establishments { get; set; }
+
+        [DataMember]
+        public int? TotalRecords { get; set; }
     }
 }

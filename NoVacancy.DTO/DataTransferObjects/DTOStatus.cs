@@ -14,10 +14,5 @@ namespace NoVacancy.DTO
         public String ErrorMsg { get; set; }
         [DataMember]
         public Boolean IsSuccessful { get; set; }
-        [DataMember]
-        public Int32 ResultId { get; set; }
-        [DataMember]
-        public Nullable<Int32> TotalRecords { get; set; }
-
     }
 }

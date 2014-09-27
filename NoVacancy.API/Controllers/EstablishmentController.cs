@@ -12,6 +12,7 @@ namespace NoVacancy.API.Controllers
 {
     public class EstablishmentController : BaseController
     {
+
         public IEstablishment _IRepository;
 
         public EstablishmentController(IEstablishment _IRepository)
@@ -38,13 +39,32 @@ namespace NoVacancy.API.Controllers
             }
             catch (Exception)
             {
-                return Request.CreateResponse(HttpStatusCode.BadRequest,"Could not create establishment. Please report to issue.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest,"Could not create establishment. Please report to issue.");
             }
         }
 
-        public Object Get()
+        public Object Get(string id)
         {
-            return new { Results = 1 };
+            try
+            {
+
+                var result = _IRepository.GetEstablishment(id);
+
+                if (result != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.NotFound);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex);
+            }
+
         }
 
 
