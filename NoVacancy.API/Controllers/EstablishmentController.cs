@@ -43,6 +43,7 @@ namespace NoVacancy.API.Controllers
             }
         }
 
+        [HttpGet]
         public Object Get(string id)
         {
             try
@@ -66,6 +67,8 @@ namespace NoVacancy.API.Controllers
             }
 
         }
+
+
 
 
     }

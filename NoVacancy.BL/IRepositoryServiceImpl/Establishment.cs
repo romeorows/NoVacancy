@@ -62,5 +62,22 @@ namespace NoVacancy.BL.IRepositoryServiceImpl
             return result;
         }
 
+        public DTOEstablishmentInfo UpdateEstablishment(DTOEstablishmentInfo data)
+        {
+            var result = new DTOEstablishmentInfo();
+
+            try
+            {
+
+                result = _IRepository.Update<DTOEstablishmentInfo, DTOEstablishmentInfo>(data);
+                result.IsSuccessful = true;
+            }
+            catch (Exception ex)
+            {
+                result.IsSuccessful = false;
+                result.ErrorMsg = "BL Error: " + ex.Message;
+            }
+            return result;
+        }
     }
 }
